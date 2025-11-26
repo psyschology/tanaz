@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal for Tannaz Irani | Jetweb Labs</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts: Playfair Display (Serif) & Montserrat (Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#C2185B',
+                            darkRed: '#880E4F',
+                            gold: '#F59E0B',
+                            lightGold: '#FCD34D',
+                            cream: '#FFF8E1',
+                            dark: '#1A1A1A',
+                            gray: '#F3F4F6'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'spin-slow': 'spin 8s linear infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C2185B; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #880E4F; 
+        }
+
+        /* Glassmorphism Utilities */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .glass-dark {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Gradient Text */
+        .text-gradient-gold {
+            background: linear-gradient(to right, #F59E0B, #FCD34D, #B45309);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Device Mockup CSS */
+        .device-mockup {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transition: all 0.5s ease;
+        }
+        
+        .nav-item.active {
+            color: #C2185B;
+            border-bottom: 2px solid #C2185B;
+        }
+
+        /* Custom Checkbox for Pricing */
+        .custom-check {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            background-color: #FCD34D;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-brand-dark font-sans overflow-x-hidden selection:bg-brand-red selection:text-white">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-brand-red rounded-full flex items-center justify-center text-white font-serif font-bold text-xl">T</div>
+                    <div class="hidden md:block">
+                        <span class="block text-sm font-bold tracking-widest text-brand-dark">TANNAZ IRANI</span>
+                        <span class="block text-[10px] text-gray-500 tracking-widest">PREPARED BY JETWEB LABS</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#audit" class="text-sm font-medium hover:text-brand-red transition-colors">The Audit</a>
+                    <a href="#simulation" class="text-sm font-medium hover:text-brand-red transition-colors">The Platform</a>
+                    <a href="#pricing" class="text-sm font-medium hover:text-brand-red transition-colors">Investment</a>
+                    <button onclick="document.getElementById('contact-modal').classList.remove('hidden')" class="bg-brand-dark text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-brand-red transition-colors duration-300">
+                        Approve Proposal
+                    </button>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button class="text-brand-dark focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-brand-cream opacity-50 skew-x-12 transform origin-top-right translate-x-20"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-gold rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow"></div>
+        <div class="absolute top-20 right-20 w-72 h-72 bg-brand-red rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-float"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8 animate-fade-in-up">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-gray-100">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    <span class="text-xs font-bold tracking-wider text-gray-600 uppercase">Proposal for Tannaz Irani</span>
+                </div>
+                
+                <h1 class="font-serif text-5xl md:text-7xl font-bold leading-tight text-brand-dark">
+                    Hi Tannaz. <br>
+                    You have the <span class="text-brand-red italic">audience.</span><br>
+                    Now let's build the <span class="text-gradient-gold">empire.</span>
+                </h1>
+                
+                <p class="text-lg text-gray-600 max-w-lg leading-relaxed border-l-4 border-brand-gold pl-6">
+                    52,000+ followers represents massive potential. But relying on basic links and DMs is a bottleneck. It's time to own your data, automate your bookings, and scale your impact.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="#simulation" class="group flex items-center justify-center gap-3 bg-brand-red text-white px-8 py-4 rounded-full font-medium transition-all hover:bg-brand-dark hover:shadow-lg transform hover:-translate-y-1">
+                        Experience The Future
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <a href="#audit" class="flex items-center justify-center gap-3 bg-white border border-gray-200 text-brand-dark px-8 py-4 rounded-full font-medium transition-all hover:bg-gray-50">
+                        See The Audit
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Image / Abstract Visual -->
+            <div class="relative hidden lg:block h-[600px] w-full">
+                <div class="absolute inset-0 bg-gradient-to-tr from-gray-100 to-white rounded-2xl shadow-2xl border border-white flex items-center justify-center overflow-hidden">
+                    <div class="text-center space-y-4 p-10">
+                        <div class="mx-auto w-32 h-32 rounded-full bg-brand-dark p-1 flex items-center justify-center mb-6 shadow-xl">
+                            <span class="text-brand-gold font-serif text-5xl italic">Ti</span>
+                        </div>
+                        <h3 class="font-serif text-3xl font-bold text-brand-dark">The Tannaz Irani<br>Experience</h3>
+                        <p class="text-sm text-gray-500 uppercase tracking-widest mt-2">Premium Coaching • NLP • Events</p>
+                        
+                        <!-- Floating Cards -->
+                        <div class="absolute top-10 right-10 bg-white p-4 rounded-xl shadow-lg animate-float" style="animation-delay: 1s;">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-green-100 p-2 rounded-lg text-green-600"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
+                                <div>
+                                    <div class="text-xs text-gray-500">Revenue</div>
+                                    <div class="text-sm font-bold">+124% Growth</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute bottom-20 left-10 bg-white p-4 rounded-xl shadow-lg animate-float" style="animation-delay: 0s;">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-brand-red/10 p-2 rounded-lg text-brand-red"><i data-lucide="calendar" class="w-5 h-5"></i></div>
+                                <div>
+                                    <div class="text-xs text-gray-500">Bookings</div>
+                                    <div class="text-sm font-bold">Automated</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: THE AUDIT (PROBLEM AWARENESS) -->
+    <section id="audit" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4 text-brand-dark">The "Linktree Limit"</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto">Why your current infrastructure is costing you thousands in lost opportunities.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
+                <!-- Current State -->
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 relative overflow-hidden group hover:shadow-lg transition-all duration-300">
+                    <div class="absolute top-0 right-0 bg-gray-200 text-gray-600 text-xs font-bold px-3 py-1 rounded-bl-lg">CURRENT STATE</div>
+                    <h3 class="font-serif text-2xl font-bold mb-6 text-gray-400">The "Leaky Bucket"</h3>
+                    
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4 opacity-60">
+                            <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-500 flex-shrink-0">
+                                <i data-lucide="x" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-700">Generic Link List</h4>
+                                <p class="text-sm text-gray-500">No branding, low trust, feels "beginner" despite your expertise.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 opacity-60">
+                            <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-500 flex-shrink-0">
+                                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-700">WhatsApp Chaos</h4>
+                                <p class="text-sm text-gray-500">Manual booking is slow. You become a scheduler, not a coach.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 opacity-60">
+                            <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-500 flex-shrink-0">
+                                <i data-lucide="database" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-700">Zero Data Ownership</h4>
+                                <p class="text-sm text-gray-500">If Instagram goes down, you lose access to your audience.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Future State -->
+                <div class="bg-brand-dark rounded-2xl p-8 border border-brand-dark relative overflow-hidden shadow-2xl transform md:-translate-y-4">
+                    <div class="absolute top-0 right-0 bg-brand-gold text-brand-dark text-xs font-bold px-3 py-1 rounded-bl-lg">JETWEB SOLUTION</div>
+                    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-brand-red rounded-full opacity-20 blur-2xl"></div>
+                    
+                    <h3 class="font-serif text-2xl font-bold mb-6 text-white">The Coaching Empire</h3>
+                    
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-brand-gold flex items-center justify-center text-brand-dark flex-shrink-0">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Premium Brand Experience</h4>
+                                <p class="text-sm text-gray-400">Immersive design that justifies high-ticket pricing instantly.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-brand-gold flex items-center justify-center text-brand-dark flex-shrink-0">
+                                <i data-lucide="zap" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Automated Booking Engine</h4>
+                                <p class="text-sm text-gray-400">Clients book & pay while you sleep. Syncs with your calendar.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-brand-gold flex items-center justify-center text-brand-dark flex-shrink-0">
+                                <i data-lucide="users" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Masterclass Funnel</h4>
+                                <p class="text-sm text-gray-400">Sell tickets to events and digital products directly. No middleman.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: THE SIMULATION (INTERACTIVE) -->
+    <section id="simulation" class="py-24 bg-gray-900 relative overflow-hidden">
+        <!-- Background Gradients -->
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-brand-dark to-[#2a0a18]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-red opacity-10 rounded-full blur-[100px]"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between mb-12">
+                <div>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-2">Your Signature Platform</h2>
+                    <p class="text-gray-400">Interact with the simulation below. This is how your clients will see you.</p>
+                </div>
+                <div class="mt-6 md:mt-0 flex gap-4">
+                    <button onclick="switchSimView('mobile')" class="p-3 rounded-lg bg-gray-800 text-gray-300 hover:text-white hover:bg-gray-700 transition-all border border-gray-700" id="btn-mobile">
+                        <i data-lucide="smartphone" class="w-6 h-6"></i>
+                    </button>
+                    <button onclick="switchSimView('desktop')" class="p-3 rounded-lg bg-brand-red text-white shadow-lg shadow-brand-red/50 transition-all" id="btn-desktop">
+                        <i data-lucide="monitor" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- SIMULATION CONTAINER -->
+            <div class="w-full bg-gray-800 rounded-2xl p-2 md:p-8 border border-gray-700 shadow-2xl transition-all duration-700" id="sim-container">
+                
+                <!-- Browser Header Mockup -->
+                <div class="w-full bg-gray-900 rounded-t-xl p-3 flex items-center gap-4 mb-4 border-b border-gray-800">
+                    <div class="flex gap-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <div class="flex-1 bg-gray-800 rounded-md py-1 px-4 text-xs text-gray-400 flex items-center justify-between font-mono">
+                        <span>tannazirani.com</span>
+                        <i data-lucide="lock" class="w-3 h-3"></i>
+                    </div>
+                </div>
+
+                <!-- THE MOCK WEBSITE APP -->
+                <div class="w-full bg-white h-[600px] rounded-lg overflow-hidden relative flex flex-col font-sans">
+                    
+                    <!-- App Navbar -->
+                    <div class="h-16 border-b border-gray-100 flex items-center justify-between px-6 bg-white z-20 sticky top-0">
+                        <div class="font-serif font-bold text-xl text-brand-dark">Tannaz Irani</div>
+                        <div class="hidden md:flex gap-6 text-xs font-bold tracking-widest text-gray-500">
+                            <button onclick="setTab('home')" class="hover:text-brand-red transition-colors nav-link active" data-target="home">HOME</button>
+                            <button onclick="setTab('masterclass')" class="hover:text-brand-red transition-colors nav-link" data-target="masterclass">MASTERCLASS</button>
+                            <button onclick="setTab('coaching')" class="hover:text-brand-red transition-colors nav-link" data-target="coaching">COACHING</button>
+                            <button onclick="setTab('shop')" class="hover:text-brand-red transition-colors nav-link" data-target="shop">SHOP</button>
+                        </div>
+                        <button class="bg-brand-red text-white px-4 py-1.5 rounded-full text-xs font-bold hover:bg-brand-dark transition-colors">LOGIN</button>
+                    </div>
+
+                    <!-- App Content Area (Scrollable) -->
+                    <div class="flex-1 overflow-y-auto overflow-x-hidden bg-gray-50 relative" id="app-content">
+                        
+                        <!-- TAB: HOME -->
+                        <div id="tab-home" class="tab-content transition-opacity duration-300">
+                            <div class="relative h-[300px] bg-brand-dark flex items-center justify-center text-center px-4">
+                                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center opacity-30"></div>
+                                <div class="relative z-10">
+                                    <h3 class="font-serif text-3xl md:text-4xl text-white mb-2">Rewrite Your Story.</h3>
+                                    <p class="text-brand-gold text-sm tracking-widest uppercase mb-6">Certified Life Coach & NLP Practitioner</p>
+                                    <button onclick="setTab('coaching')" class="bg-brand-gold text-brand-dark px-6 py-2 rounded-full font-bold text-sm hover:bg-white transition-colors">Book Consultation</button>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-1 p-6 -mt-10 relative z-20 max-w-4xl mx-auto">
+                                <div class="bg-white p-4 rounded-xl shadow-lg text-center">
+                                    <div class="font-serif text-2xl font-bold text-brand-red">52k+</div>
+                                    <div class="text-[10px] text-gray-500 uppercase font-bold">Community</div>
+                                </div>
+                                <div class="bg-white p-4 rounded-xl shadow-lg text-center">
+                                    <div class="font-serif text-2xl font-bold text-brand-red">500+</div>
+                                    <div class="text-[10px] text-gray-500 uppercase font-bold">Lives Changed</div>
+                                </div>
+                                <div class="bg-white p-4 rounded-xl shadow-lg text-center">
+                                    <div class="font-serif text-2xl font-bold text-brand-red">10yr</div>
+                                    <div class="text-[10px] text-gray-500 uppercase font-bold">Experience</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TAB: MASTERCLASS -->
+                        <div id="tab-masterclass" class="tab-content hidden absolute inset-0 bg-white">
+                            <div class="p-8">
+                                <div class="flex items-center gap-2 mb-4">
+                                    <span class="bg-red-100 text-red-600 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Live Event</span>
+                                    <span class="text-gray-400 text-xs">Dec 15, 2025 • 7:00 PM IST</span>
+                                </div>
+                                <h2 class="font-serif text-3xl font-bold text-brand-dark mb-4">The Mindset Shift: Breaking Patterns</h2>
+                                <p class="text-gray-600 text-sm mb-6 leading-relaxed">Join 500+ attendees in this exclusive 2-hour deep dive into NLP techniques that break limiting beliefs instantly.</p>
+                                
+                                <div class="bg-gray-50 border border-gray-100 rounded-xl p-4 mb-6">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="font-bold text-gray-700">General Access</span>
+                                        <span class="font-serif font-bold text-brand-red">₹999</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
+                                        <div class="bg-brand-gold h-2 rounded-full" style="width: 75%"></div>
+                                    </div>
+                                    <p class="text-xs text-red-500 font-medium">Only 12 spots left at this price</p>
+                                </div>
+                                
+                                <button class="w-full bg-brand-dark text-white py-3 rounded-lg font-bold hover:bg-brand-red transition-colors flex items-center justify-center gap-2">
+                                    <i data-lucide="ticket" class="w-4 h-4"></i> Secure Your Spot
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- TAB: COACHING (CALENDAR) -->
+                        <div id="tab-coaching" class="tab-content hidden absolute inset-0 bg-white">
+                            <div class="p-6 h-full flex flex-col">
+                                <h2 class="font-serif text-2xl font-bold mb-4">Select a Time</h2>
+                                
+                                <!-- Mock Calendar -->
+                                <div class="bg-white border border-gray-100 rounded-xl shadow-sm p-4 mb-4">
+                                    <div class="flex justify-between items-center mb-4">
+                                        <button class="text-gray-400 hover:text-brand-dark"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
+                                        <span class="font-bold text-sm">December 2025</span>
+                                        <button class="text-gray-400 hover:text-brand-dark"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
+                                    </div>
+                                    <div class="grid grid-cols-7 gap-1 text-center text-xs text-gray-400 mb-2">
+                                        <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+                                    </div>
+                                    <div class="grid grid-cols-7 gap-2 text-center text-sm font-medium">
+                                        <span class="text-gray-300">29</span><span class="text-gray-300">30</span>
+                                        <button class="p-1 hover:bg-gray-100 rounded">1</button>
+                                        <button class="p-1 hover:bg-gray-100 rounded">2</button>
+                                        <button class="p-1 hover:bg-gray-100 rounded">3</button>
+                                        <button class="p-1 bg-brand-red text-white rounded shadow-md">4</button>
+                                        <button class="p-1 hover:bg-gray-100 rounded">5</button>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-2 overflow-y-auto">
+                                    <p class="text-xs font-bold text-gray-500 uppercase mb-2">Available Slots on Dec 4</p>
+                                    <button class="w-full text-left px-4 py-3 border border-brand-red bg-red-50 text-brand-red rounded-lg text-sm font-bold flex justify-between items-center group">
+                                        10:00 AM - 11:00 AM
+                                        <span class="w-4 h-4 rounded-full border border-brand-red flex items-center justify-center group-hover:bg-brand-red group-hover:text-white transition-colors"><i data-lucide="check" class="w-3 h-3"></i></span>
+                                    </button>
+                                    <button class="w-full text-left px-4 py-3 border border-gray-200 text-gray-600 rounded-lg text-sm font-medium hover:border-brand-gold transition-colors">
+                                        2:00 PM - 3:00 PM
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                         <!-- TAB: SHOP -->
+                         <div id="tab-shop" class="tab-content hidden absolute inset-0 bg-white">
+                            <div class="p-6 grid grid-cols-2 gap-4">
+                                <div class="col-span-2 mb-2">
+                                    <h2 class="font-serif text-2xl font-bold">Resources</h2>
+                                </div>
+                                
+                                <!-- Product 1 -->
+                                <div class="group cursor-pointer">
+                                    <div class="bg-gray-100 rounded-lg h-32 mb-2 relative overflow-hidden">
+                                        <div class="absolute inset-0 bg-brand-gold opacity-10 group-hover:opacity-20 transition-opacity"></div>
+                                        <div class="absolute inset-0 flex items-center justify-center text-gray-300">
+                                            <i data-lucide="book" class="w-8 h-8"></i>
+                                        </div>
+                                    </div>
+                                    <h4 class="font-bold text-sm">30 Days to Clarity</h4>
+                                    <p class="text-xs text-gray-500">E-Book • PDF</p>
+                                    <div class="flex justify-between items-center mt-1">
+                                        <span class="font-serif font-bold text-brand-dark">₹499</span>
+                                        <button class="bg-brand-dark text-white rounded-full p-1"><i data-lucide="plus" class="w-3 h-3"></i></button>
+                                    </div>
+                                </div>
+
+                                 <!-- Product 2 -->
+                                 <div class="group cursor-pointer">
+                                    <div class="bg-gray-100 rounded-lg h-32 mb-2 relative overflow-hidden">
+                                        <div class="absolute inset-0 bg-brand-red opacity-10 group-hover:opacity-20 transition-opacity"></div>
+                                        <div class="absolute inset-0 flex items-center justify-center text-gray-300">
+                                            <i data-lucide="video" class="w-8 h-8"></i>
+                                        </div>
+                                    </div>
+                                    <h4 class="font-bold text-sm">Anxiety Relief</h4>
+                                    <p class="text-xs text-gray-500">Video Course</p>
+                                    <div class="flex justify-between items-center mt-1">
+                                        <span class="font-serif font-bold text-brand-dark">₹2,499</span>
+                                        <button class="bg-brand-dark text-white rounded-full p-1"><i data-lucide="plus" class="w-3 h-3"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                     <!-- App Bottom Bar (Mobile Only Style) -->
+                    <div class="bg-white border-t border-gray-100 p-2 flex justify-around items-center md:hidden pb-4">
+                        <button onclick="setTab('home')" class="p-2 text-brand-red"><i data-lucide="home" class="w-5 h-5"></i></button>
+                        <button onclick="setTab('masterclass')" class="p-2 text-gray-400 hover:text-brand-red"><i data-lucide="users" class="w-5 h-5"></i></button>
+                        <div class="w-10 h-10 bg-brand-dark rounded-full flex items-center justify-center text-white -mt-6 shadow-lg border-4 border-white cursor-pointer" onclick="setTab('coaching')">
+                            <i data-lucide="calendar" class="w-5 h-5"></i>
+                        </div>
+                        <button onclick="setTab('shop')" class="p-2 text-gray-400 hover:text-brand-red"><i data-lucide="shopping-bag" class="w-5 h-5"></i></button>
+                        <button class="p-2 text-gray-400 hover:text-brand-red"><i data-lucide="user" class="w-5 h-5"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="text-center text-gray-500 mt-6 text-sm italic">
+                <i data-lucide="mouse-pointer" class="w-4 h-4 inline mr-1"></i> Try clicking the tabs inside the device. This is a live code prototype.
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 4: INVESTMENT (PRICING) -->
+    <section id="pricing" class="py-24 bg-brand-cream relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-brand-dark mb-4">Investment Strategy</h2>
+                <p class="text-gray-600">Choose the infrastructure level that matches your ambition.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                
+                <!-- Plan 1 -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300">
+                    <h3 class="text-lg font-bold text-gray-500 tracking-widest uppercase mb-2">The Authority</h3>
+                    <div class="flex items-baseline mb-6">
+                        <span class="text-3xl font-bold text-brand-dark">₹24,999</span>
+                        <span class="text-gray-400 ml-2">/ one-time</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-6 pb-6 border-b border-gray-100">Perfect for establishing a professional digital home base.</p>
+                    
+                    <ul class="space-y-4 mb-8 text-sm text-gray-600">
+                        <li class="flex items-center"><div class="custom-check"><i data-lucide="check" class="w-3 h-3 text-brand-dark"></i></div>Custom "Bio-Link" Website</li>
+                        <li class="flex items-center"><div class="custom-check"><i data-lucide="check" class="w-3 h-3 text-brand-dark"></i></div>Auto-Booking Integration</li>
+                        <li class="flex items-center"><div class="custom-check"><i data-lucide="check" class="w-3 h-3 text-brand-dark"></i></div>WhatsApp Button</li>
+                        <li class="flex items-center"><div class="custom-check"><i data-lucide="check" class="w-3 h-3 text-brand-dark"></i></div>SEO Optimization</li>
+                    </ul>
+                    <a href="#contact-modal" onclick="document.getElementById('contact-modal').classList.remove('hidden')" class="block w-full text-center border-2 border-brand-dark text-brand-dark py-3 rounded-full font-bold hover:bg-brand-dark hover:text-white transition-colors">Select Authority</a>
+                </div>
+
+                <!-- Plan 2 (RECOMMENDED) -->
+                <div class="bg-brand-dark text-white rounded-2xl p-8 border-2 border-brand-gold shadow-2xl transform scale-105 relative z-10">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-dark px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">Recommended</div>
+                    
+                    <h3 class="text-lg font-bold text-brand-gold tracking-widest uppercase mb-2">The Empire</h3>
+                    <div class="flex items-baseline mb-6">
+                        <span class="text-4xl font-bold text-white">₹49,999</span>
+                        <span class="text-gray-400 ml-2">/ one-time</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-6 pb-6 border-b border-gray-700">The full ecosystem. Sell courses, tickets, and coaching automatically.</p>
+                    
+                    <ul class="space-y-4 mb-8 text-sm text-gray-300">
+                        <li class="flex items-center"><div class="custom-check"><i data-lucide="check" class="w-3 h-3 text-brand-dark"></i></div>Everything in Authority</li>
+                        <li class="flex items-center"><div class="custom-check"><i data-lucide="check" class="w-3 h-3 text-brand-dark"></i></div><strong>Masterclass Ticketing System</strong></li>
+                        <li class="flex items-center"><div class="custom-check"><i data-lucide="check" class="w-3 h-3 text-brand-dark"></i></div><strong>Digital Product Store</strong> (E-books)</li>
+                        <li class="flex items-center"><div class="custom-check"><i data-lucide="check" class="w-3 h-3 text-brand-dark"></i></div>Email Marketing Setup</li>
+                        <li class="flex items-center"><div class="custom-check"><i data-lucide="check" class="w-3 h-3 text-brand-dark"></i></div>Payment Gateway (Razorpay/Stripe)</li>
+                    </ul>
+                    <a href="#contact-modal" onclick="document.getElementById('contact-modal').classList.remove('hidden')" class="block w-full text-center bg-brand-gold text-brand-dark py-4 rounded-full font-bold hover:bg-white transition-colors shadow-lg shadow-brand-gold/20">Build My Empire</a>
+                </div>
+                <!-- Plan 3 -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300">
+                    <h3 class="text-lg font-bold text-brand-red tracking-widest uppercase mb-2">The Legacy</h3>
+                    <div class="flex items-baseline mb-6">
+                        <span class="text-3xl font-bold text-brand-dark">₹89,999</span>
+                        <span class="text-gray-400 ml-2">/ one-time</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-6 pb-6 border-b border-gray-100">Full custom web application with dedicated management.</p>
+                    
+                    <ul class="space-y-4 mb-8 text-sm text-gray-600">
+                        <li class="flex items-center"><div class="custom-check"><i data-lucide="check" class="w-3 h-3 text-brand-dark"></i></div>Everything in Empire</li>
+                        <li class="flex items-center"><div class="custom-check"><i data-lucide="check" class="w-3 h-3 text-brand-dark"></i></div>Custom Mobile App (PWA)</li>
+                        <li class="flex items-center"><div class="custom-check"><i data-lucide="check" class="w-3 h-3 text-brand-dark"></i></div>Membership Area (Login)</li>
+                        <li class="flex items-center"><div class="custom-check"><i data-lucide="check" class="w-3 h-3 text-brand-dark"></i></div>3 Months Maintenance</li>
+                    </ul>
+                    <a href="#contact-modal" onclick="document.getElementById('contact-modal').classList.remove('hidden')" class="block w-full text-center border-2 border-brand-dark text-brand-dark py-3 rounded-full font-bold hover:bg-brand-dark hover:text-white transition-colors">Select Legacy</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / CTA -->
+    <section class="bg-brand-dark text-white py-20 border-t border-gray-800">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="font-serif text-3xl md:text-5xl font-bold mb-6">Let's build a platform worthy of your 50k+ community.</h2>
+            <p class="text-gray-400 mb-10">We are ready to start development immediately upon approval.</p>
+            <button onclick="document.getElementById('contact-modal').classList.remove('hidden')" class="bg-brand-red text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-brand-red transition-all shadow-lg shadow-brand-red/30">
+                Start The Project
+            </button>
+            <div class="mt-20 pt-10 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <p>&copy; 2025 Jetweb Labs. All Rights Reserved.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <span>Devansh Biyani, CTO</span>
+                    <span>•</span>
+                    <span>For Tannaz Irani</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT MODAL -->
+    <div id="contact-modal" class="hidden fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <!-- Overlay -->
+            <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" aria-hidden="true" onclick="document.getElementById('contact-modal').classList.add('hidden')"></div>
+
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-brand-gold/20 sm:mx-0 sm:h-10 sm:w-10">
+                            <i data-lucide="check" class="w-6 h-6 text-brand-dark"></i>
+                        </div>
+                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                            <h3 class="text-lg leading-6 font-bold text-gray-900 font-serif" id="modal-title">Ready to scale?</h3>
+                            <div class="mt-2">
+                                <p class="text-sm text-gray-500 mb-4">You are one step away from transforming your digital presence.</p>
+                                <form onsubmit="event.preventDefault(); alert('Devansh has been notified. We will send the invoice shortly.'); document.getElementById('contact-modal').classList.add('hidden');" class="space-y-4">
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Select Plan</label>
+                                        <select class="w-full border-gray-300 rounded-md shadow-sm focus:border-brand-red focus:ring focus:ring-brand-red focus:ring-opacity-50 p-2 border">
+                                            <option>The Empire (₹49,999) - Recommended</option>
+                                            <option>The Authority (₹24,999)</option>
+                                            <option>The Legacy (₹89,999)</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Your Email</label>
+                                        <input type="email" placeholder="tannaz@example.com" class="w-full border-gray-300 rounded-md shadow-sm focus:border-brand-red focus:ring focus:ring-brand-red focus:ring-opacity-50 p-2 border" required>
+                                    </div>
+                                    <button type="submit" class="w-full bg-brand-dark text-white py-3 rounded-lg font-bold hover:bg-brand-red transition-colors">Confirm Interest</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" onclick="document.getElementById('contact-modal').classList.add('hidden')">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass-dark', 'text-white');
+                navbar.classList.remove('glass', 'text-brand-dark');
+            } else {
+                navbar.classList.add('glass', 'text-brand-dark');
+                navbar.classList.remove('glass-dark', 'text-white');
+            }
+        });
+
+        // Simulation Logic
+        const container = document.getElementById('sim-container');
+        const desktopBtn = document.getElementById('btn-desktop');
+        const mobileBtn = document.getElementById('btn-mobile');
+
+        function switchSimView(view) {
+            if (view === 'mobile') {
+                container.style.maxWidth = '375px';
+                container.style.margin = '0 auto';
+                
+                // Button Styling
+                mobileBtn.classList.add('bg-brand-red', 'text-white', 'shadow-lg');
+                mobileBtn.classList.remove('bg-gray-800', 'text-gray-300');
+                desktopBtn.classList.remove('bg-brand-red', 'text-white', 'shadow-lg');
+                desktopBtn.classList.add('bg-gray-800', 'text-gray-300');
+                
+            } else {
+                container.style.maxWidth = '100%';
+                
+                // Button Styling
+                desktopBtn.classList.add('bg-brand-red', 'text-white', 'shadow-lg');
+                desktopBtn.classList.remove('bg-gray-800', 'text-gray-300');
+                mobileBtn.classList.remove('bg-brand-red', 'text-white', 'shadow-lg');
+                mobileBtn.classList.add('bg-gray-800', 'text-gray-300');
+            }
+        }
+
+        // Tab Switching Logic inside Simulation
+        function setTab(tabId) {
+            // Hide all contents
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('animate-fade-in-up');
+            });
+            
+            // Show selected content
+            const selected = document.getElementById('tab-' + tabId);
+            selected.classList.remove('hidden');
+            selected.classList.add('animate-fade-in-up'); // Re-trigger animation
+
+            // Update Nav Links (Desktop)
+            document.querySelectorAll('.nav-link').forEach(btn => {
+                if(btn.dataset.target === tabId) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
